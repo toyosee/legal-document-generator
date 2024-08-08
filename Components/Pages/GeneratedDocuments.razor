@@ -1,0 +1,75 @@
+﻿@page "/generated-documents"
+@inject GeneratedDocumentService GeneratedDocumentService
+@inject DocumentStorageService DocumentStorageService
+@inject NavigationManager NavigationManager
+
+<div class="container my-5">
+    <h3 class="mb-4">Generated Documents</h3>
+
+    @if (generatedDocuments == null || !generatedDocuments.Any())
+    {
+        <div class="alert alert-info">No generated documents found.</div>
+    }
+    else
+    {
+        <table class="table table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th>Document ID</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+                    <th>Last Name</th>
+                    <th>Phone Number</th>
+                    <th>Generated On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var document in generatedDocuments)
+                {
+                    <tr>
+                        <td>@document.DocumentId</td>
+                        <td>@document.FirstName</td>
+                        <td>@document.MiddleName</td>
+                        <td>@document.LastName</td>
+                        <td>@document.PhoneNumber</td>
+                        <td>@document.GenerationDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm" @onclick="() => ViewDocument(document)">View</button>
+                            <button class="btn btn-secondary btn-sm" @onclick="() => PrintDocumentAsync(document)">Print</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    private List<FormData> generatedDocuments;
+
+    protected override async Task OnInitializedAsync()
+    {
+        generatedDocuments = await GeneratedDocumentService.GetGeneratedDocumentsAsync();
+    }
+
+    private void ViewDocument(FormData document)
+    {
+        DocumentStorageService.SelectedDocument = document;
+        NavigationManager.NavigateTo("/view-document");
+    }
+
+    private async Task PrintDocumentAsync(FormData document)
+    {
+        try
+        {
+            string documentUrl = await GeneratedDocumentService.PrintDocumentAsync(document);
+            // Optionally, you can navigate to the document URL or handle it further
+            NavigationManager.NavigateTo(documentUrl, true); // Opens the URL in a new tab
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error printing document: {ex.Message}");
+        }
+    }
+}

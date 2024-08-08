@@ -1,0 +1,118 @@
+﻿@inject GeneratedDocumentService DocumentService
+@inject IJSRuntime JSRuntime
+@using CourtDocumentGenerator.Models
+@rendermode InteractiveServer
+
+
+<div class="container row my-5 flex flex-col lg:flex-row">
+    <!-- Filter section -->
+    <div class="col-md-4 mb-4 lg:mb-0 lg:w-1/4">
+        <label for="timeRange" class="block text-lg font-semibold mb-2">Filter by Time Range:</label>
+        <select id="timeRange" @onchange="OnTimeRangeChanged" class="form-select">
+            <option value="7">Last 7 Days</option>
+            <option value="14">Last 2 Weeks</option>
+            <option value="30">Last 1 Month</option>
+            <option value="custom">Custom Range</option>
+        </select>
+        @if (showCustomRange)
+        {
+            <div class="mt-4">
+                <label for="startDate" class="block text-sm font-medium mb-1">Start Date:</label>
+                <input type="date" id="startDate" @bind="customStartDate" class="form-input" />
+                <label for="endDate" class="block text-sm font-medium mb-1 mt-2">End Date:</label>
+                <input type="date" id="endDate" @bind="customEndDate" class="form-input" />
+                <button @onclick="OnCustomRangeApply" class="mt-2 btn btn-primary">Apply</button>
+            </div>
+        }
+        <br />
+        <!-- Div for total documents -->
+        <div class="text-muted bg-gray-100 p-4 rounded-lg shadow-lg flex items-center">
+            <div class="ml-3 text-muted">
+                <h2 class="text-3xl font-bold"><strong class="count-doc">@totalDocuments</strong> Documents</h2>
+            </div>
+        </div> <br />
+    </div>
+
+    <div class="flex-1 lg:ml-8 col-md-8">
+
+        <!-- Div for the chart -->
+        <div class="chart-container col-md-8">
+            <canvas id="barChart"></canvas>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<int> documentCounts = new List<int>();
+    private List<string> days = new List<string>();
+    private int totalDocuments;
+    private string selectedRange = "7";
+    private bool showCustomRange = false;
+    private DateTime? customStartDate = DateTime.UtcNow.AddDays(-7);
+    private DateTime? customEndDate = DateTime.UtcNow;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await FilterDocumentsAsync();
+    }
+
+    private async Task OnTimeRangeChanged(ChangeEventArgs e)
+    {
+        selectedRange = e.Value.ToString();
+        showCustomRange = selectedRange == "custom";
+        await FilterDocumentsAsync();
+    }
+
+    private async Task OnCustomRangeApply()
+    {
+        selectedRange = "custom";
+        showCustomRange = false;
+        await FilterDocumentsAsync();
+    }
+
+    private async Task FilterDocumentsAsync()
+    {
+        try
+        {
+            var documents = await DocumentService.GetGeneratedDocumentsAsync();
+            IEnumerable<FormData> filteredDocuments;
+
+            if (selectedRange == "custom" && customStartDate.HasValue && customEndDate.HasValue)
+            {
+                filteredDocuments = documents
+                    .Where(d => d.GenerationDate >= customStartDate.Value && d.GenerationDate <= customEndDate.Value);
+            }
+            else
+            {
+                var daysRange = int.Parse(selectedRange);
+                filteredDocuments = documents
+                    .Where(d => DateTime.UtcNow.Subtract(d.GenerationDate).Days <= daysRange);
+            }
+
+            var groupedDocuments = filteredDocuments
+                .GroupBy(d => d.GenerationDate.ToString("yyyy-MM-dd"))
+                .Select(g => new { Date = g.Key, Count = g.Count() })
+                .ToList();
+
+            days = groupedDocuments.Select(d => d.Date).ToList();
+            documentCounts = groupedDocuments.Select(d => d.Count).ToList();
+            totalDocuments = documentCounts.Sum();
+
+            Console.WriteLine($"Days: {string.Join(", ", days)}");
+            Console.WriteLine($"Counts: {string.Join(", ", documentCounts)}");
+            StateHasChanged(); // Ensure the UI updates with the new data
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading or processing data: {ex.Message}");
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("renderBarChart", days, documentCounts);
+        }
+    }
+}

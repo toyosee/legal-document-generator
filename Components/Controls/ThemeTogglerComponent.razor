@@ -1,0 +1,27 @@
+﻿@inject IJSRuntime JSRuntime
+
+<div class="container my-5">
+    <button class="btn btn-primary" @onclick="ToggleTheme">
+        Toggle Theme
+    </button>
+</div>
+
+@code {
+    private bool isDarkTheme = false;
+
+    private async Task ToggleTheme()
+    {
+        isDarkTheme = !isDarkTheme;
+
+        if (isDarkTheme)
+        {
+            // Apply dark theme
+            await JSRuntime.InvokeVoidAsync("addDarkTheme");
+        }
+        else
+        {
+            // Apply light theme
+            await JSRuntime.InvokeVoidAsync("removeDarkTheme");
+        }
+    }
+}

@@ -1,0 +1,89 @@
+﻿@page "/view-document"
+@inject DocumentStorageService DocumentStorageService
+@inject NavigationManager NavigationManager
+
+<div class="container my-5">
+    
+    <h3 class="mb-4">View Document @document.DocumentUrl</h3>
+
+    @if (document == null)
+    {
+        <div class="alert alert-danger">Document not found.</div>
+    }
+    else
+    {
+        <div class="card">
+            <div class="card-body">
+                <dl class="row mb-3">
+                    <dt class="col-sm-3">Document ID:</dt>
+                    <dd class="col-sm-9">@document.DocumentId</dd>
+
+                    <dt class="col-sm-3">First Name:</dt>
+                    <dd class="col-sm-9">@document.FirstName</dd>
+
+                    <dt class="col-sm-3">Middle Name:</dt>
+                    <dd class="col-sm-9">@document.MiddleName</dd>
+
+                    <dt class="col-sm-3">Last Name:</dt>
+                    <dd class="col-sm-9">@document.LastName</dd>
+
+                    <dt class="col-sm-3">Address:</dt>
+                    <dd class="col-sm-9">@document.Address</dd>
+
+                    <dt class="col-sm-3">Phone Number:</dt>
+                    <dd class="col-sm-9">@document.PhoneNumber</dd>
+
+                    <dt class="col-sm-3">Generated On:</dt>
+                    <dd class="col-sm-9">@document.GenerationDate.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+                </dl>
+
+                <div class="mb-3">
+                    <strong>Picture:</strong>
+                    @if (!string.IsNullOrEmpty(document.Picture))
+                    {
+                        <img src="@document.Picture" alt="Picture" class="img-fluid rounded" style="max-width: 200px;" />
+                    }
+                    else
+                    {
+                        <p class="text-muted">No picture available.</p>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <strong>Signature/Thumbprint:</strong>
+                    @if (!string.IsNullOrEmpty(document.Signature))
+                    {
+                        <img src="@document.Signature" alt="Signature/Thumbprint" class="img-fluid rounded" style="max-width: 200px;" />
+                    }
+                    else
+                    {
+                        <p class="text-muted">No signature/thumbprint available.</p>
+                    }
+                </div>
+
+                <div class="mb-3">
+                    <strong>Document Content:</strong>
+                    <div class="border p-3 rounded bg-light">
+                        @document.DocumentContent
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary" @onclick="NavigateBack">Back</button>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    private FormData document;
+
+    protected override void OnInitialized()
+    {
+        document = DocumentStorageService.SelectedDocument;
+    }
+
+    private void NavigateBack()
+    {
+        NavigationManager.NavigateTo("/generated-documents");
+    }
+}

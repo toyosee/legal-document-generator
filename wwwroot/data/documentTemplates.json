@@ -1,0 +1,135 @@
+[
+  {
+    "Category": "Affidavit",
+    "SubCategories": [
+      {
+        "SubCategory": "Lost Items",
+        "Template": "This is an affidavit for {FirstName} {MiddleName} {LastName} regarding lost items. I, {FirstName} {MiddleName} {LastName}, residing at {Address}, with phone number {PhoneNumber}, do hereby solemnly affirm that I have lost the following items: {LostItems}. The loss occurred on {DocumentLostDate} hours at {Location}. This affidavit is made to formally document the loss and for any necessary legal purposes."
+      },
+      {
+        "SubCategory": "Age",
+        "Template": "This is an affidavit for {FirstName} {MiddleName} {LastName} regarding their age. I, {FirstName} {MiddleName} {LastName}, residing at {Address}, with phone number {PhoneNumber}, do hereby declare that I was born on {BirthDate}. This affidavit is made to certify my age for the purpose of [specific purpose, e.g., applying for senior benefits, proving age for legal reasons]. Date: {GenerationDate}."
+      },
+      {
+        "SubCategory": "Identity Verification",
+        "Template": "This is an affidavit for {FirstName} {MiddleName} {LastName} to verify their identity. I, {FirstName} {MiddleName} {LastName}, residing at {Address}, with phone number {PhoneNumber}, affirm that the following information is true and correct: [details for verification]. This affidavit is made to authenticate my identity for [specific purpose, e.g., legal proceedings, financial transactions]. Date: {GenerationDate}."
+      },
+      {
+        "SubCategory": "Residency",
+        "Template": "This is an affidavit for {FirstName} {MiddleName} {LastName} confirming their residency. I, {FirstName} {MiddleName} {LastName}, residing at {Address}, with phone number {PhoneNumber}, affirm that I have been living at the above address since {MoveInDate}. This affidavit is provided for the purpose of [specific purpose, e.g., proving residency for school enrollment, legal purposes]. Date: {GenerationDate}."
+      }
+    ]
+  },
+  {
+    "Category": "Contract",
+    "SubCategories": [
+      {
+        "SubCategory": "Rental",
+        "Template": "This is a rental contract between {LandlordName}, the landlord, and {TenantName}, the tenant. The property located at {PropertyAddress} is leased to {TenantName} starting from {StartDate} to {EndDate}. The agreed rent amount is {RentAmount} per month. Both parties agree to the terms outlined in this contract, including maintenance responsibilities and payment schedules. Date: {GenerationDate}."
+      },
+      {
+        "SubCategory": "Employment",
+        "Template": "This is an employment contract between {EmployerName} and {EmployeeName}. {EmployeeName} will be employed as a {JobTitle} starting from {StartDate} at a salary of {SalaryAmount} per annum. The terms of employment, including job responsibilities, working hours, and benefits, are outlined in this contract. This agreement is valid from {StartDate} to {EndDate} unless terminated earlier according to company policy. Date: {GenerationDate}."
+      },
+      {
+        "SubCategory": "Freelance",
+        "Template": "This is a freelance contract between {ClientName} and {FreelancerName}. {FreelancerName} agrees to provide the following services: [description of services] for {ClientName}. The project will commence on {StartDate} and is expected to be completed by {EndDate}. The agreed payment amount is {PaymentAmount}, payable upon [payment terms]. Date: {GenerationDate}."
+      },
+      {
+        "SubCategory": "Service",
+        "Template": "This is a service contract between {ServiceProviderName} and {ClientName}. {ServiceProviderName} will provide the following services: [description of services] to {ClientName} starting from {StartDate}. The total fee for the services is {ServiceFee}, payable [payment terms]. Both parties agree to the terms specified in this contract, including service standards and completion deadlines. Date: {GenerationDate}."
+      }
+    ]
+  },
+  {
+    "Category": "Agreement",
+    "SubCategories": [
+      {
+        "SubCategory": "Partnership",
+        "Template": "This is a partnership agreement between {Partner1Name} and {Partner2Name}. Both parties agree to enter into a partnership to [describe business activity]. The partnership will begin on {StartDate} and will be governed by the terms outlined in this agreement, including profit sharing, responsibilities, and decision-making processes. Date: {GenerationDate}."
+      },
+      {
+        "SubCategory": "Non-Disclosure",
+        "Template": "This is a non-disclosure agreement between {DisclosingPartyName} and {ReceivingPartyName}. {ReceivingPartyName} agrees to keep confidential all proprietary information disclosed by {DisclosingPartyName} during the course of their relationship. This agreement is effective from {StartDate} and remains in effect for {Duration} years. Date: {GenerationDate}."
+      }
+    ]
+  },
+  {
+    "Category": "Will",
+    "SubCategories": [
+      {
+        "SubCategory": "Last Will and Testament",
+        "Template": "This is the Last Will and Testament of {TestatorName}. I, {TestatorName}, residing at {Address}, with phone number {PhoneNumber}, declare this to be my last will. I hereby revoke all previous wills and codicils. I appoint {ExecutorName} as my executor and distribute my estate as follows: [details of distribution]. This will is made on {GenerationDate}."
+      },
+      {
+        "SubCategory": "Living Will",
+        "Template": "This is a living will by {TestatorName}, residing at {Address}. In the event that I am unable to make medical decisions, I direct that the following treatments be administered or withheld: [details of medical treatments]. This living will is made to ensure my medical wishes are followed. Date: {GenerationDate}."
+      }
+    ]
+  },
+  {
+    "Category": "Power of Attorney",
+    "SubCategories": [
+      {
+        "SubCategory": "General",
+        "Template": "This is a general power of attorney granted by {PrincipalName} to {AgentName}. {AgentName} is authorized to act on my behalf in all matters, including financial transactions and legal decisions, starting from {StartDate}. This power of attorney remains in effect until {EndDate}, unless revoked earlier. Date: {GenerationDate}."
+      },
+      {
+        "SubCategory": "Medical",
+        "Template": "This is a medical power of attorney granted by {PrincipalName} to {AgentName}. {AgentName} is authorized to make medical decisions on my behalf if I am unable to do so. This power of attorney is effective from {StartDate} and remains in effect until {EndDate}. Date: {GenerationDate}."
+      }
+    ]
+  },
+  {
+    "Category": "Lease Agreement",
+    "SubCategories": [
+      {
+        "SubCategory": "Commercial",
+        "Template": "This is a commercial lease agreement between {LandlordName} and {TenantName} for the property located at {PropertyAddress}. The lease term is from {StartDate} to {EndDate} with a monthly rent of {RentAmount}. Both parties agree to the terms specified in this lease, including maintenance responsibilities and renewal options. Date: {GenerationDate}."
+      },
+      {
+        "SubCategory": "Residential",
+        "Template": "This is a residential lease agreement between {LandlordName} and {TenantName} for the property located at {PropertyAddress}. The lease commences on {StartDate} and ends on {EndDate}. The monthly rent is {RentAmount}, payable on the first of each month. The lease includes provisions for maintenance and utilities. Date: {GenerationDate}."
+      }
+    ]
+  },
+  {
+    "Category": "Release Form",
+    "SubCategories": [
+      {
+        "SubCategory": "Liability Release",
+        "Template": "This is a liability release form for {ReleasorName}. I, {ReleasorName}, hereby release {ReleaseeName} from any and all liability for any injuries or damages that may occur as a result of [specific activity or event]. This release is effective as of {GenerationDate}."
+      },
+      {
+        "SubCategory": "Media Release",
+        "Template": "This is a media release form for {ReleasorName}. I, {ReleasorName}, grant permission to {ReleaseeName} to use my image, voice, and likeness in media materials including photographs, videos, and publications. This release is effective from {StartDate} and remains in effect indefinitely. Date: {GenerationDate}."
+      }
+    ]
+  },
+  {
+    "Category": "Settlement Agreement",
+    "SubCategories": [
+      {
+        "SubCategory": "Legal",
+        "Template": "This is a legal settlement agreement between {Party1Name} and {Party2Name}. Both parties agree to settle the dispute arising from [describe dispute] on the terms outlined in this agreement. The settlement includes [details of settlement terms]. This agreement is effective as of {GenerationDate}."
+      },
+      {
+        "SubCategory": "Financial",
+        "Template": "This is a financial settlement agreement between {CreditorName} and {DebtorName}. {DebtorName} agrees to pay {CreditorName} the amount of {SettlementAmount} as full settlement of the debt. The payment will be made according to the schedule outlined in this agreement. This settlement is effective from {GenerationDate}."
+      }
+    ]
+  },
+  {
+    "Category": "Release of Claim",
+    "SubCategories": [
+      {
+        "SubCategory": "Workers' Compensation",
+        "Template": "This is a release of claim for workers' compensation benefits. I, {ClaimantName}, acknowledge that I have received all benefits and compensation due under my workers' compensation claim. I hereby release {InsuranceCompanyName} from any further liability related to this claim. Date: {GenerationDate}."
+      },
+      {
+        "SubCategory": "Personal Injury",
+        "Template": "This is a release of claim for personal injury. I, {ClaimantName}, agree to release {DefendantName} from any further claims or liabilities related to the injury sustained on {IncidentDate}. This release includes all known and unknown claims arising from the incident. Date: {GenerationDate}."
+      }
+    ]
+  }
+]

@@ -1,0 +1,313 @@
+﻿@page "/generate-document"
+@inject DocumentService DocumentService
+@inject GeneratedDocumentService GeneratedDocumentService
+@inject CategoryService CategoryService
+@inject IJSRuntime JSRuntime
+
+@inject NavigationManager NavigationManager
+
+<div class="container my-5">
+    <h3 class="mb-4">Generate Document</h3>
+
+    @if (!isDocumentGenerated)
+    {
+        <div class="col-12">
+            <EditForm Model="@formData" OnValidSubmit="OnGenerateDocument">
+                <DataAnnotationsValidator />
+                <ValidationSummary class="alert alert-danger" />
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="category" class="col-form-label">Category</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select id="category" class="form-select w-full sm:w-2/3" @onchange="OnCategoryChange">
+                            <option value="">Select Category</option>
+                            @foreach (var category in categories)
+                            {
+                                <option value="@category.Category">@category.Category</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="subCategory" class="col-form-label">SubCategory</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select id="subCategory" class="form-select w-full sm:w-2/3" @bind="selectedSubCategory">
+                            <option value="">Select SubCategory</option>
+                            @foreach (var subCategory in subCategories)
+                            {
+                                <option value="@subCategory.SubCategory">@subCategory.SubCategory</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                @if (selectedSubCategory == "Lost Items")
+                {
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <label class="col-form-label">Lost Items</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                @foreach (var item in lostItems)
+                                {
+                                    <div class="form-check">
+                                        <InputCheckbox id="@item" @bind-Value="selectedLostItemsDict[item]" class="form-check-input" />
+                                        <label class="form-check-label" for="@item">@item</label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <label for="documentLostDate" class="col-form-label">Date of Document Lost</label>
+                        </div>
+                        <div class="col-md-6">
+                            <InputDate id="documentLostDate" class="form-control w-full sm:w-2/3" @bind-Value="formData.DocumentLostDate" />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="documentLostTime" class="col-form-label">Time of Document Lost</label>
+                    </div>
+                    <div class="col-md-6">
+                        <InputText typeof="time" id="documentLostTime" class="form-control w-full sm:w-2/3" @bind-Value="formData.DocumentLostTimeString" />
+                    </div>
+                </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <label for="location" class="col-form-label">Location</label>
+                        </div>
+                        <div class="col-md-6">
+                            <InputText id="location" class="form-control w-full sm:w-2/3" @bind-Value="formData.Location" />
+                        </div>
+                    </div>
+                }
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="firstName" class="col-form-label">First Name</label>
+                    </div>
+                    <div class="col-md-6">
+                        <InputText id="firstName" class="form-control w-full sm:w-2/3" @bind-Value="formData.FirstName" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="middleName" class="col-form-label">Middle Name</label>
+                    </div>
+                    <div class="col-md-6">
+                        <InputText id="middleName" class="form-control w-full sm:w-2/3" @bind-Value="formData.MiddleName" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="lastName" class="col-form-label">Last Name</label>
+                    </div>
+                    <div class="col-md-6">
+                        <InputText id="lastName" class="form-control w-full sm:w-2/3" @bind-Value="formData.LastName" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="address" class="col-form-label">Address</label>
+                    </div>
+                    <div class="col-md-6">
+                        <InputText id="address" class="form-control w-full sm:w-2/3" @bind-Value="formData.Address" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="phoneNumber" class="col-form-label">Phone Number</label>
+                    </div>
+                    <div class="col-md-6">
+                        <InputText id="phoneNumber" class="form-control w-full sm:w-2/3" @bind-Value="formData.PhoneNumber" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="picture" class="col-form-label">Picture</label>
+                    </div>
+                    <div class="col-md-6">
+                        <InputFile id="picture" class="form-control w-full sm:w-2/3" OnChange="LoadPicture" />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-2">
+                        <label for="signature" class="col-form-label">Signature</label>
+                    </div>
+                    <div class="col-md-6">
+                        <InputFile id="signature" class="form-control w-full sm:w-2/3" OnChange="LoadSignature" />
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Generate Document</button>
+            </EditForm>
+        </div>
+    }
+    else
+    {
+        <div>
+            <h4>Generated Document:</h4>
+            <p>@generatedDocument</p>
+            <p><strong>Generated On:</strong> @formData.GenerationDate</p>
+            <button class="btn btn-secondary" @onclick="EditDocument">Edit</button>
+            <button class="btn btn-secondary" @onclick="PrintDocument">Save Document</button>
+        </div>
+    }
+</div>
+
+@code {
+    private FormData formData = new();
+    private List<CategoryTemplate> categories = new();
+    private List<SubCategoryTemplate> subCategories = new();
+    private List<string> lostItems = new();
+    private Dictionary<string, bool> selectedLostItemsDict = new();
+    private string selectedCategory;
+    private string selectedSubCategory;
+    private string generatedDocument;
+    private bool isDocumentGenerated = false;
+    // private int documentIdCounter = 1; // Counter for generating unique document IDs
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            categories = await DocumentService.GetDocumentTemplatesAsync();
+            lostItems = CategoryService.GetLostItems();
+            selectedLostItemsDict = lostItems.ToDictionary(item => item, item => false);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in OnInitializedAsync: {ex.Message}");
+            categories = new List<CategoryTemplate>();
+            lostItems = new List<string>();
+        }
+    }
+
+    private void OnCategoryChange(ChangeEventArgs e)
+    {
+        selectedCategory = e.Value?.ToString();
+        var selectedCategoryTemplate = categories.FirstOrDefault(c => c.Category == selectedCategory);
+        if (selectedCategoryTemplate != null)
+        {
+            subCategories = selectedCategoryTemplate.SubCategories ?? new List<SubCategoryTemplate>();
+            selectedSubCategory = string.Empty; // Reset subcategory selection
+        }
+        else
+        {
+            subCategories = new List<SubCategoryTemplate>(); // Clear subcategories if no match
+        }
+    }
+
+    private void OnGenerateDocument()
+    {
+        Console.WriteLine($"Selected SubCategory: {selectedSubCategory}");
+        Console.WriteLine($"SubCategories Count: {subCategories.Count}");
+
+        var template = subCategories.FirstOrDefault(s => s.SubCategory == selectedSubCategory);
+        if (template != null)
+        {
+            formData.GenerationDate = DateTime.UtcNow;
+            // Format DocumentLostDate and DocumentLostTime
+            var documentLostDateTime = formData.DocumentLostDate.Date.Add(formData.DocumentLostTime);
+
+
+            generatedDocument = template.Template
+                .Replace("{FirstName}", formData.FirstName)
+                .Replace("{MiddleName}", formData.MiddleName)
+                .Replace("{LastName}", formData.LastName)
+                .Replace("{Address}", formData.Address)
+                .Replace("{PhoneNumber}", formData.PhoneNumber)
+                .Replace("{GenerationDate}", formData.GenerationDate.ToString("yyyy-MM-dd HH:mm:ss"))
+                .Replace("{DocumentLostDate}", documentLostDateTime.ToString("yyyy-MM-dd HH:mm:ss"))
+                .Replace("{Location}", formData.Location);
+
+
+            if (selectedSubCategory == "Lost Items")
+            {
+                // Include selected lost items in the document
+                var selectedLostItems = selectedLostItemsDict.Where(kvp => kvp.Value).Select(kvp => kvp.Key);
+                var lostItemsList = string.Join(", ", selectedLostItems);
+                generatedDocument = generatedDocument.Replace("{LostItems}", lostItemsList);
+            }
+
+            isDocumentGenerated = true;
+        }
+        else
+        {
+            Console.WriteLine("Template not found for the selected subcategory.");
+            isDocumentGenerated = false;
+        }
+    }
+
+    private async Task LoadPicture(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        var fileName = $"{Guid.NewGuid()}_{file.Name}";
+        var filePath = Path.Combine("wwwroot/images", fileName);
+
+        using (var stream = file.OpenReadStream())
+        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        {
+            await stream.CopyToAsync(fileStream);
+        }
+
+        formData.Picture = $"/images/{fileName}"; // Path relative to wwwroot
+    }
+
+    private async Task LoadSignature(InputFileChangeEventArgs e)
+    {
+        var file = e.File;
+        var fileName = $"{Guid.NewGuid()}_{file.Name}";
+        var filePath = Path.Combine("wwwroot/images", fileName);
+
+        using (var stream = file.OpenReadStream())
+        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        {
+            await stream.CopyToAsync(fileStream);
+        }
+
+        formData.Signature = $"/images/{fileName}"; // Path relative to wwwroot
+    }
+
+    private void EditDocument()
+    {
+        isDocumentGenerated = false;
+    }
+
+    private async Task PrintDocument()
+    {
+        try
+        {
+            await GeneratedDocumentService.SaveGeneratedDocumentAsync(formData, generatedDocument);
+            formData = new FormData();
+            selectedCategory = string.Empty;
+            selectedSubCategory = string.Empty;
+            generatedDocument = string.Empty;
+            selectedLostItemsDict = lostItems.ToDictionary(item => item, item => false);
+            isDocumentGenerated = false;
+
+            NavigationManager.NavigateTo("/generated-documents");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error saving document: {ex.Message}");
+        }
+    }
+}

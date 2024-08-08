@@ -1,0 +1,31 @@
+﻿/* Default light theme */
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+
+nav {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+.top-section {
+    background-color: #ffffff;
+    color: #212529;
+}
+
+/* Dark theme */
+body.dark-theme {
+    background-color: #343a40;
+    color: #f8f9fa;
+}
+
+    body.dark-theme nav {
+        background-color: #212529;
+        color: #f8f9fa;
+    }
+
+    body.dark-theme .top-section {
+        background-color: #212529;
+        color: #f8f9fa;
+    }

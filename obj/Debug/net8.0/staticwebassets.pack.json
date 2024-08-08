@@ -1,0 +1,93 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\CourtDocumentGenerator.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CourtDocumentGenerator.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\data\\documentTemplates.json",
+      "PackagePath": "staticwebassets\\data\\documentTemplates.json"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\data\\documents\\SOoFq09356.docx",
+      "PackagePath": "staticwebassets\\data\\documents\\SOoFq09356.docx"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\data\\documents\\TbooQ02457.docx",
+      "PackagePath": "staticwebassets\\data\\documents\\TbooQ02457.docx"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\data\\documents\\aqUif21987.docx",
+      "PackagePath": "staticwebassets\\data\\documents\\aqUif21987.docx"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\data\\documents\\iinzm00045.docx",
+      "PackagePath": "staticwebassets\\data\\documents\\iinzm00045.docx"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\data\\documents\\poQna59401.docx",
+      "PackagePath": "staticwebassets\\data\\documents\\poQna59401.docx"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\data\\documents\\tprNf51768.docx",
+      "PackagePath": "staticwebassets\\data\\documents\\tprNf51768.docx"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\data\\generatedDocuments.json",
+      "PackagePath": "staticwebassets\\data\\generatedDocuments.json"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\images\\4dc2f251-9318-4e97-b497-3f44f960410e_asterik.png",
+      "PackagePath": "staticwebassets\\images\\4dc2f251-9318-4e97-b497-3f44f960410e_asterik.png"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\images\\98840645-cbbf-40a9-949a-e1a5f328fd44_BMI portal.PNG",
+      "PackagePath": "staticwebassets\\images\\98840645-cbbf-40a9-949a-e1a5f328fd44_BMI portal.PNG"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\js\\print.js",
+      "PackagePath": "staticwebassets\\js\\print.js"
+    },
+    {
+      "Id": "C:\\Users\\User\\source\\repos\\CourtDocumentGenerator\\CourtDocumentGenerator\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.CourtDocumentGenerator.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.CourtDocumentGenerator.props",
+      "PackagePath": "build\\CourtDocumentGenerator.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.CourtDocumentGenerator.props",
+      "PackagePath": "buildMultiTargeting\\CourtDocumentGenerator.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.CourtDocumentGenerator.props",
+      "PackagePath": "buildTransitive\\CourtDocumentGenerator.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

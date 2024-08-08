@@ -1,0 +1,83 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CourtDocumentGenerator/1.0.0": {
+        "dependencies": {
+          "Microsoft.Office.Interop.Word": "15.0.4797.1003",
+          "NetOffice.Word": "1.7.4.3"
+        },
+        "runtime": {
+          "CourtDocumentGenerator.dll": {}
+        }
+      },
+      "Microsoft.Office.Interop.Word/15.0.4797.1003": {
+        "runtime": {
+          "lib/net20/Microsoft.Office.Interop.Word.dll": {
+            "assemblyVersion": "15.0.0.0",
+            "fileVersion": "15.0.4797.1003"
+          }
+        }
+      },
+      "NetOffice.Core/1.7.4.3": {
+        "runtime": {
+          "lib/net45/NetOffice.dll": {
+            "assemblyVersion": "1.7.3.0",
+            "fileVersion": "1.7.3.0"
+          },
+          "lib/net45/OfficeApi.dll": {
+            "assemblyVersion": "1.7.3.0",
+            "fileVersion": "1.7.3.0"
+          },
+          "lib/net45/VBIDEApi.dll": {
+            "assemblyVersion": "1.7.3.0",
+            "fileVersion": "1.7.3.0"
+          }
+        }
+      },
+      "NetOffice.Word/1.7.4.3": {
+        "dependencies": {
+          "NetOffice.Core": "1.7.4.3"
+        },
+        "runtime": {
+          "lib/net45/WordApi.dll": {
+            "assemblyVersion": "1.7.3.0",
+            "fileVersion": "1.7.3.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CourtDocumentGenerator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Office.Interop.Word/15.0.4797.1003": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-p22pljmHaQjDxNLqO+uO5vi3y0TK5t1mAtSAg93K28/e12Hw3qzfflAo6XHvNXxnvz9HZGv59vLCwIaC9xbXNQ==",
+      "path": "microsoft.office.interop.word/15.0.4797.1003",
+      "hashPath": "microsoft.office.interop.word.15.0.4797.1003.nupkg.sha512"
+    },
+    "NetOffice.Core/1.7.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5bVrnk0UGut723Jz8lSrMn9yJF0OtptAkSeVQx1A7rGQ8TDHfUu2UbWNSGdyy3Sj/nHsAdT238axtacZqwoNCA==",
+      "path": "netoffice.core/1.7.4.3",
+      "hashPath": "netoffice.core.1.7.4.3.nupkg.sha512"
+    },
+    "NetOffice.Word/1.7.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PoE4KO0ZvFdElXru2czOdGSrhjCbl4Fn+q7XKu9nt21aaJKMCBrAbTWXDhkBYtm/44QcNTu4hqY8qy+br8/MbA==",
+      "path": "netoffice.word/1.7.4.3",
+      "hashPath": "netoffice.word.1.7.4.3.nupkg.sha512"
+    }
+  }
+}
